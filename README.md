@@ -7,8 +7,6 @@
 [![GitHub issues](https://img.shields.io/github/issues/Razee4315/pandachat)](https://github.com/Razee4315/pandachat/issues)
 [![GitHub forks](https://img.shields.io/github/forks/Razee4315/pandachat)](https://github.com/Razee4315/pandachat/network)
 
-<img src="public/panda-logo.png" alt="PandaChat Logo" width="200"/>
-
 🚀 A modern real-time chat application that brings people together with style!
 
 [Report Bug](https://github.com/Razee4315/pandachat/issues) · [Request Feature](https://github.com/Razee4315/pandachat/issues)
