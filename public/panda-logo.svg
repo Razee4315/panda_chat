@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Panda face -->
+  <circle cx="100" cy="100" r="90" fill="white" stroke="black" stroke-width="4"/>
+  
+  <!-- Eyes -->
+  <ellipse cx="65" cy="85" rx="25" ry="30" fill="black"/>
+  <ellipse cx="135" cy="85" rx="25" ry="30" fill="black"/>
+  
+  <!-- Eye shine -->
+  <circle cx="70" cy="80" r="5" fill="white"/>
+  <circle cx="140" cy="80" r="5" fill="white"/>
+  
+  <!-- Nose -->
+  <circle cx="100" cy="110" r="10" fill="black"/>
+  
+  <!-- Mouth -->
+  <path d="M85,125 Q100,135 115,125" fill="none" stroke="black" stroke-width="3"/>
+  
+  <!-- Text -->
+  <text x="100" y="180" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">PandaChat</text>
+</svg>

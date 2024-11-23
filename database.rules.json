@@ -1,0 +1,109 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    
+    "users": {
+      ".read": "auth != null",
+      ".indexOn": ["email", "firstName", "lastName"],
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "$uid === auth.uid",
+        ".validate": "newData.hasChildren(['email', 'firstName', 'lastName', 'dateOfBirth', 'status', 'lastSeen'])",
+        "email": {
+          ".validate": "newData.isString() && newData.val().matches(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/)"
+        },
+        "firstName": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "lastName": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "dateOfBirth": {
+          ".validate": "newData.isString() && newData.val().matches(/^\\d{4}-\\d{2}-\\d{2}$/)"
+        },
+        "status": {
+          ".read": "auth != null",
+          ".write": "$uid === auth.uid",
+          ".validate": "newData.isString() && (newData.val() === 'online' || newData.val() === 'offline')"
+        },
+        "lastSeen": {
+          ".validate": "newData.isNumber()"
+        },
+        "friends": {
+          ".read": "auth != null",
+          "$friendId": {
+            ".write": "$uid === auth.uid || $friendId === auth.uid",
+            ".validate": "newData.hasChildren(['uid', 'email', 'firstName', 'lastName', 'displayName', 'status', 'lastSeen'])"
+          }
+        }
+      }
+    },
+
+    "friendRequests": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$requestId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['from', 'to', 'status', 'timestamp'])",
+        "from": {
+          ".validate": "newData.isString()"
+        },
+        "to": {
+          ".validate": "newData.isString()"
+        },
+        "status": {
+          ".validate": "newData.isString() && (newData.val() === 'pending' || newData.val() === 'accepted' || newData.val() === 'rejected')"
+        },
+        "timestamp": {
+          ".validate": "newData.isNumber()"
+        }
+      }
+    },
+
+    "chatRooms": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$roomId": {
+        ".read": "auth != null && data.child('participants').child(auth.uid).exists()",
+        ".write": "auth != null && (!data.exists() || data.child('participants').child(auth.uid).exists())",
+        "participants": {
+          ".validate": "newData.hasChildren()",
+          "$uid": {
+            ".validate": "newData.isBoolean()"
+          }
+        },
+        "messages": {
+          "$messageId": {
+            ".validate": "newData.hasChildren(['text', 'uid', 'timestamp', 'type'])",
+            "text": {
+              ".validate": "newData.isString()"
+            },
+            "uid": {
+              ".validate": "newData.isString() && newData.val() === auth.uid"
+            },
+            "timestamp": {
+              ".validate": "newData.isNumber()"
+            },
+            "type": {
+              ".validate": "newData.isString() && (newData.val() === 'text' || newData.val() === 'emoji')"
+            }
+          }
+        },
+        "type": {
+          ".validate": "newData.isString() && (newData.val() === 'private' || newData.val() === 'group')"
+        },
+        "name": {
+          ".validate": "!newData.exists() || newData.isString()"
+        },
+        "groupAdmin": {
+          ".validate": "!newData.exists() || (newData.isString() && newData.val() === auth.uid)"
+        },
+        "lastMessage": {
+          ".validate": "!newData.exists() || newData.hasChildren(['text', 'uid', 'timestamp', 'type'])"
+        }
+      }
+    }
+  }
+}
