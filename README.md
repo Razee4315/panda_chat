@@ -2,11 +2,6 @@
 
 <div align="center">
 
-[![GitHub license](https://img.shields.io/github/license/Razee4315/pandachat)](https://github.com/Razee4315/pandachat/blob/main/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/Razee4315/pandachat)](https://github.com/Razee4315/pandachat/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/Razee4315/pandachat)](https://github.com/Razee4315/pandachat/issues)
-[![GitHub forks](https://img.shields.io/github/forks/Razee4315/pandachat)](https://github.com/Razee4315/pandachat/network)
-
 🚀 A modern real-time chat application that brings people together with style!
 
 [Report Bug](https://github.com/Razee4315/pandachat/issues) · [Request Feature](https://github.com/Razee4315/pandachat/issues)
