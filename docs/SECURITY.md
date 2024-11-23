@@ -1,12 +1,5 @@
 # Security Policy
 
-## Supported Versions
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.0.x   | :white_check_mark: |
-| < 1.0   | :x:                |
-
 ## Reporting a Vulnerability
 
 We take the security of PandaChat seriously. If you believe you have found a security vulnerability, please report it to us as described below.
